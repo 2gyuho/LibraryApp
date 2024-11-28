@@ -1,5 +1,6 @@
 package service;
 
+import domain.Book;
 import domain.Loan;
 import domain.LoanHistory;
 
@@ -8,14 +9,31 @@ import java.util.LinkedList;
 
 public class LoanService {
 
-    LinkedList<Loan> loans = new LinkedList<>();
-    ArrayList<LoanHistory> loanHistories = new ArrayList<>();
+    private final RegistrationService registrationService;
 
-    public static void loanBook(String name, int catalogueNumber) {
-        //todo
+    private LinkedList<Loan> loans = new LinkedList<>();
+    private ArrayList<LoanHistory> loanHistories = new ArrayList<>();
+
+    public LoanService(RegistrationService registrationService) {
+        this.registrationService = registrationService;
     }
 
-    public static void returnBook(String name, int catalogueNumber) {
+    private Book findBook(int catalogueNumber) {
+        Book searchedBook = new Book(catalogueNumber);
+        for (Book book : registrationService.getBooks()) {
+            if (book.compareTo(searchedBook) == 0) {
+                return book;
+            }
+        }
+        return null;
+    }
+
+    public void loanBook(String name, int catalogueNumber) {
+        Book book = new Book(catalogueNumber);
+
+    }
+
+    public void returnBook(String name, int catalogueNumber) {
         //todo
     }
 

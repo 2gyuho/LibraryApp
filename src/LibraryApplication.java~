@@ -1,7 +1,15 @@
+import domain.Book;
 import domain.Borrower;
+import domain.Loan;
+import domain.LoanHistory;
 import service.DisplayService;
 import service.LoanService;
 import service.RegistrationService;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.TreeSet;
 
 public class LibraryApplication {
 

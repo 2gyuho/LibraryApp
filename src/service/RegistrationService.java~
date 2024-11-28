@@ -8,8 +8,8 @@ import java.util.TreeSet;
 
 public class RegistrationService {
 
-    private TreeSet<Book> books = new TreeSet<>();
-    private HashSet<Borrower> borrowers = new HashSet<>();
+    TreeSet<Book> books = new TreeSet<>();
+    HashSet<Borrower> borrowers = new HashSet<>();
 
     public void registerBook(String title, String author) {
         Book book = new Book(title, author, books.size() + 1);
