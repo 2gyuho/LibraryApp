@@ -1,30 +1,38 @@
 package service;
 
 import domain.Book;
+import domain.Borrower;
 
+import java.util.HashSet;
 import java.util.TreeSet;
 
 public class DisplayService {
 
-    public void display(TreeSet<Book> books, String type) {
-        switch (type) {
-            case "대출가능":
-                for (Book b : books) {
-                    if (b.check()) {
-                        System.out.println(b);
-                    }
-                }
-                break;
-            case "대출중":
-                for (Book b : books) {
-                    if (!b.check()) {
-                        System.out.println(b);
-                    }
-                }
-                break;
-            default:
-                System.out.println("올바른 display 타입을 입력해주세요.");
-                break;
+    public void displayAvailableBooks(TreeSet<Book> books) {
+        System.out.println("====================[대출 가능한 책 목록]====================");
+        for (Book b : books) {
+            if (b.check()) {
+                System.out.println(b + "\n");
+            }
         }
+        System.out.println("============================================================");
+    }
+
+    public void displayBorrowedBooks(TreeSet<Book> books) {
+        System.out.println("=====================[대출 중인 목록]====================");
+        for (Book b : books) {
+            if (!b.check()) {
+                System.out.println(b + "\n");
+            }
+        }
+        System.out.println("=======================================================");
+    }
+
+    public void displayBorrower(HashSet<Borrower> borrowers) {
+        System.out.println("=====================[대출자 목록]====================");
+        for (Borrower b : borrowers) {
+            System.out.println(b + "\n");
+        }
+        System.out.println("============================================================");
     }
 }

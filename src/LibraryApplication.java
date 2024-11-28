@@ -10,8 +10,8 @@ public class LibraryApplication {
     private final DisplayService displayService;
 
     public LibraryApplication() {
-        this.loanService = new LoanService(RegistrationService);
         this.registrationService = new RegistrationService();
+        this.loanService = new LoanService(registrationService);
         this.displayService = new DisplayService();
     }
 
@@ -31,7 +31,11 @@ public class LibraryApplication {
         this.loanService.returnBook(name, catalogueNumber);
     }
 
-    public void display(String type) {
-        this.displayService.display(registrationService.getBooks(), type);
+    public void displayAvailableBooks() {
+        this.displayService.displayAvailableBooks(registrationService.getBooks());
+    }
+
+    public void displayBorrowedBooks() {
+        this.displayService.displayBorrowedBooks(registrationService.getBooks());
     }
 }
